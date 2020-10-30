@@ -487,24 +487,6 @@ img {
   background-image: url("../img/check-square-solid.svg");
 }
 
-.item__button:hover {
-  opacity: 0.8;
-}
-
-.item__button:active {
-  opacity: 0.6;
-}
-
-.item__button--update {
-  background-image: url("../img/pencil-alt-solid.svg");
-  background-size: 22px auto;
-}
-
-.item__button--delete {
-  background-image: url("../img/trash-alt-solid.svg");
-  background-size: 20px auto;
-}
-
 .form--task .form__info {
   display: none;
 }
