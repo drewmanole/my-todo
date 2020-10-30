@@ -1,9 +1,12 @@
 (function () {
-  var onModalEscPress = function (evt) {
+
+  var closeModalOnEscPress = function (evt) {
     if (evt.key === 'Escape') {
-      closeModal();
+      closeModal.call(this);
     }
   }
+
+  var onModalEscPress;
 
 
   var openModal = function () {
@@ -15,6 +18,8 @@
     });
 
     this.element.dispatchEvent(openEvent);
+
+    onModalEscPress = closeModalOnEscPress.bind(this);
     document.addEventListener('keydown', onModalEscPress);
   }
 
@@ -33,7 +38,6 @@
 
 
   var Modal = function (modalClassName) {
-    // console.log(modalClassName);
     var modal = this;
     this.element = document.querySelector(modalClassName);
     var closeButtons = this.element.querySelectorAll('.modal__close');
@@ -42,7 +46,7 @@
       closeButtons.forEach(function (closeButton) {
         closeButton.addEventListener('click', function (evt) {
           evt.preventDefault();
-          closeModal.bind(modal)();
+          closeModal.call(modal);
         });
       });
     }
@@ -56,4 +60,5 @@
 
 
   window.Modal = Modal;
+  
 })();
